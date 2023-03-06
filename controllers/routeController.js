@@ -38,10 +38,43 @@ const user_added_post = (req, res) => {
         console.log(`new user added: ${userinformation.name}`);
     })
     .catch((err) => {
-        res.status(400);
-        console.log(`[ERROR] User not added`);
-        res.render('404');
+        res.status(500);
+        console.log(`[ERROR] User not added: ${err}`);
+        res.render('addUser');
 
+    })
+}
+
+const update_username_post = (req, res) => {
+    const userinformation = userInformationModel(req.body);
+    const usernameOld = { username : req.body.oldUsername};
+    const usernameNew = { $set: { username: req.body.username }};
+
+    userInformationModel.updateOne(usernameOld, usernameNew)
+    .then((result) => {
+        res.status(200).render('index');
+        console.log(`Username updated: ${req.body.oldUsername} -> ${req.body.username}`);
+    })
+    .catch((err) => {
+        res.status(500).render('changeUsername');
+        console.log(`[ERROR] Username not updated: ${err}`);
+    })
+
+}
+
+const update_password_post = (req, res) => {
+    const userinformation = userInformationModel(req.body);
+    const passwordOld = { password: req.body.oldPassword }
+    const passwordNew = { $set: { password: req.body.password }};
+
+    userInformationModel.updateOne(passwordOld, passwordNew)
+    .then((result) => {
+        res.status(200).render('index');
+        console.log(`Username password: ${req.body.oldPassword} -> ${req.body.password}`);
+    })
+    .catch((err) => {
+        res.status(500).render('changePassword');
+        console.log(`[ERROR] Password not updated: ${err}`);
     })
 }
 
@@ -53,5 +86,7 @@ module.exports = {
     read_all_users_get,
     change_pw_get,
     change_username_get,
-    user_added_post
+    user_added_post,
+    update_username_post,
+    update_password_post
 }

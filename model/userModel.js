@@ -6,17 +6,23 @@ const Schema = mongoose.Schema;
 const userSchema = ({
     name: {
         type: String,
-        required: true
     },
     username: {
-        type: String,
-        required: true
+        $type: String,
     },
     password: {
-        type: String,
-        required: true
+        $type: String,
+    },
+
+    /* FOR UPDATIN USER INFORMATION */
+    oldUsername: {
+        $type: String
+    },
+    oldPassword: {
+        $type: String
     }
-})
+    
+});
 
 const userInformationModel = mongoose.model('user', userSchema);
 

@@ -14,7 +14,10 @@ router.get('/change-password', routeControllers.change_pw_get);
 
 /* POST ROUTES */
 router.post('/add-user', routeControllers.user_added_post);
+router.post('/change-username', routeControllers.update_username_post);
+router.post('/change-password', routeControllers.update_password_post);
 
+/* PARAM ROUTES */
 
 
 module.exports = router;
