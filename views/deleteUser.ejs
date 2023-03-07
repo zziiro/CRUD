@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>User Deleted Confirmation</title>
+    <title>DELETE USER</title>
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <h1>USER DELETED</h1>
+    <h1>DELETE A USER</h1>
 
     <!-- delete a user -->
-    <form action="/user-deleted-confirmation" method="POST">
-        <input type="text" name="emp" id="emp" placeholder="Employee First Name">
+    <form action="delete-user" method="DELETE">
+        <input type="text" name="name" id="name" placeholder="User First Name">
         <button>Delete</button>
     </form>
-    
+
 </body>
 </html>

@@ -8,13 +8,13 @@ const userSchema = ({
         type: String,
     },
     username: {
-        $type: String,
+        type: String,
     },
     password: {
-        $type: String,
+        type: String,
     },
 
-    /* FOR UPDATIN USER INFORMATION */
+    /* FOR UPDATING USER INFORMATION */
     oldUsername: {
         $type: String
     },

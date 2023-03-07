@@ -15,7 +15,8 @@ mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: t
     app.listen(port); 
     console.log(`Connected to Mongo: Launching server at ${port}`);
 })
-.catch((err) => { console.log(`There has been an error ${err}`); })
+.catch((err) => { console.log(`There has been an error connecting to MongoDB: ${err} | ,
+Server not luanched..`); })
 
 
 /* SETTING VIEW ENGINE AND STATIC FILES */

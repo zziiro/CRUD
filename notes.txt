@@ -1,0 +1,26 @@
+const userinformation = userInformationModel(req.body);
+    const filter = { name : req.body.name };
+    
+    userInformationModel.deleteOne(filter)
+    .then((result) => {
+        res.status(200).render('index');
+        console.log(`Instances of | ${req.body.name} | has been deleted`);
+    })
+    .catch((err) => {
+        res.status(500);
+        console.log(`${filter} has not been deleted`);
+    })
+
+
+      const name = req.params.name;
+
+    userInformationModel.DeleteOne(name)
+    .then((result) => {
+        const user = result;
+        res.status(200).render('Index');
+        console.log(`User with name (${name}) has been deleted..`);
+    })
+    .catch((err) => {
+        res.status(500);
+        console.log(`User with the name (${name}) has not been deleted..`);
+    })
