@@ -105,17 +105,11 @@ const see_all_users_by_id = (req, res) => {
 
 /* DELETE ROUTES */
 const delete_user = (req, res) => {
-    console.log('In delete_user method');
-    
-    userInformationModel.deleteOne( { name: req.body.name })
-    .then((result) => {
-        res.status(200).render('Index');
-        console.log(`User with the name (${name}) has been deleted..`);
-    })
-    .catch((err) => {
-        res.status(500);
-        console.log(`User with the name (${name}) has not been deleted..`);
-    })
+    const id = req.params.id;
+
+    userInformationModel.findByIdAndDelete(id)
+    .then((result) => {res.json({ redirect: '/read-all-users'})})
+    .catch((err) => {console.log(`[ERROR]: ${err}`)});
     
 }
 

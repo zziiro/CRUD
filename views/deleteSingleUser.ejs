@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Single User</title>
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <h1> <%= user.name %> </h1>
+    <div>
+        <h1> <%= user.name %> </h1>
+    
+        <a href="#" class="delete" data-doc="<%= user.id %>">
+            DELETE USER
+        </a>    
+    </div>
+   
+    <script>
+        const deleteAnchor = document.querySelector('a.delete');
 
+        deleteAnchor.addEventListener('click', (e) => {
+            const endpoint = `/${deleteAnchor.dataset.doc}`
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch((err) => console.log(`[ERROR]: ${err}`))
+        })
+    </script>
 
 </body>
 </html>

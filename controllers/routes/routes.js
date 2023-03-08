@@ -17,11 +17,15 @@ router.post('/add-user', routeControllers.add_user_post);
 router.post('/change-username', routeControllers.update_username_post);
 router.post('/change-password', routeControllers.update_password_post);
 
+
 /* ID ROUTES */ 
 router.get('/:id', routeControllers.see_all_users_by_id);
 
+
 /* DELETE ROUTES */
-router.delete('/delete-user', routeControllers.delete_user);
+router.delete('/:id', routeControllers.delete_user);
+
+
 
 /* EXPORT THE ROUTES */
 module.exports = router;
